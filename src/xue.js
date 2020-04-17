@@ -1,4 +1,4 @@
-import { observer } from "./observer";
+import { observer, defineReactive } from "./observer";
 import Compile from "./compile";
 export default class Xue {
   constructor(options = {}) {
@@ -30,5 +30,9 @@ export default class Xue {
         get: this.$options.computed[key],
       })
     );
+  }
+  $set(obj, key, val) {
+    defineReactive(obj, key, val);
+    obj.__ob__.dep.notify();
   }
 }

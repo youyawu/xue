@@ -6,11 +6,17 @@ const xue = new Xue({
     html: "<p>p</p>",
     count: 0,
     className: "red",
+    a: {
+      b: 1,
+    },
   },
   methods: {
     click() {
       this.count += 1;
       this.className = this.count;
+    },
+    newVal() {
+      this.$set(this.a, "c", "newVal");
     },
   },
   computed: {
